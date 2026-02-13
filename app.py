@@ -239,9 +239,10 @@ def load_model():
         scaler = joblib.load("heart_scaler.pkl")
         expected_columns = joblib.load("heart_columns.pkl")
         return model, scaler, expected_columns
-    except:
-        st.error("⚠️ Model files not found. Please ensure all required files are present.")
+    except Exception as e:
+        st.error(f"Model loading error: {e}")
         return None, None, None
+
 
 model, scaler, expected_columns = load_model()
 
